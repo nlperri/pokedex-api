@@ -19,7 +19,7 @@ export const theme = extendTheme({
       200: '#FF3333', //button hover
       300: '#E00000', //button active
     },
-    brown: '##BF9762', //card normal
+    brown: '#BF9762', //card normal
   },
   styles: {
     global: {

@@ -1,5 +1,5 @@
 export const goToPokedex = (navigate) => {
-  navigate('/')
+  navigate('/pokedex')
 }
 
 export const goToPokemonDetail = (navigate, id) => {
@@ -7,5 +7,5 @@ export const goToPokemonDetail = (navigate, id) => {
 }
 
 export const goToPokemonList = (navigate) => {
-  navigate('/list')
+  navigate('/')
 }
