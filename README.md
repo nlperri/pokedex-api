@@ -8,5 +8,5 @@ Os conteúdos principais a serem estudados são:
 
 - Integração de APIs
 - React Router
-- Design Systems
+- Design Systems (Chakra-UI)
 - Estado Global
