@@ -12,7 +12,7 @@ export function Router() {
         <Header />
         <Routes>
           <Route path='/' element={<PokemonListPage />} />
-          <Route path='/pokemon/:id' element={<PokemonDetailPage />} />
+          <Route path='/pokemon/:name' element={<PokemonDetailPage />} />
           <Route path='/pokedex' element={<PokedexPage />} />
         </Routes>
       </PokemonContextProvider>
