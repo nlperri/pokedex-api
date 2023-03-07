@@ -4,7 +4,14 @@ import { PokemonCard } from '../../components/PokemonCard'
 import { PokemonContext } from '../../contexts/PokemonContext'
 
 export function PokemonListPage() {
-  const { pokemons } = useContext(PokemonContext)
+  const { pokemons, pokedex } = useContext(PokemonContext)
+
+  const filteredPokemonList = pokemons.filter(
+    (pokemon) =>
+      !pokedex.find(
+        (pokemonInPokedex) => pokemon.data.id === pokemonInPokedex.id
+      )
+  )
 
   return (
     <main>
@@ -17,14 +24,8 @@ export function PokemonListPage() {
       >
         <Heading>Todos Pokémons</Heading>
         <Box gap={'1.25rem'} flexWrap={'wrap'} display={'flex'}>
-          {pokemons.map((pokemon) => {
-            return (
-              <PokemonCard
-                key={pokemon.name}
-                name={pokemon.name}
-                pokemonUrl={pokemon.url}
-              />
-            )
+          {filteredPokemonList.map((pokemon) => {
+            return <PokemonCard key={pokemon.data.id} pokemon={pokemon.data} />
           })}
         </Box>
       </Box>
