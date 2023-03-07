@@ -13,7 +13,7 @@ export const theme = extendTheme({
       100: '#729F92', // card grass
       200: '#76A866', //card bug
     },
-    orange: '#EAAB7D', //card fire
+
     red: {
       100: '#FF6262', //excluir button
       200: '#FF3333', //button hover
