@@ -1,3 +1,4 @@
+import { useDisclosure } from '@chakra-ui/react'
 import axios from 'axios'
 import { createContext, useEffect, useState } from 'react'
 import bug from '../assets/types/bug.svg'
@@ -25,6 +26,7 @@ export function PokemonContextProvider({ children }) {
   const [pokemons, setPokemons] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [pokedex, setPokedex] = useState([])
+  const { onClose, isOpen } = useDisclosure()
 
   async function getPokemons() {
     let endpoints = []

@@ -1,9 +1,27 @@
-import { Box, Button, Img, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Heading,
+  Img,
+  Text,
+  useDisclosure,
+} from '@chakra-ui/react'
 import pokeball from '../../assets/pokeball.svg'
 import { useContext } from 'react'
 import { PokemonContext } from '../../contexts/PokemonContext'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { goToPokemonDetail } from '../../router/coordinator'
+import { GotchaModal } from '../GotchaModal'
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from '@chakra-ui/react'
+import { DeleteModal } from '../DeleteModal'
 
 export function PokemonCard({ pokemon }) {
   const {
@@ -15,11 +33,23 @@ export function PokemonCard({ pokemon }) {
     renderTypeTwo,
   } = useContext(PokemonContext)
 
+  const { isOpen, onClose, onOpen } = useDisclosure()
+
   const location = useLocation()
   const navigate = useNavigate()
 
   if (isLoading) {
     return
+  }
+
+  const closeModal = () => {
+    onClose()
+    addToPokedex(pokemon)
+  }
+
+  const closeDeleteModal = () => {
+    onClose()
+    removeFromPokedex(pokemon)
   }
 
   return (
@@ -66,37 +96,43 @@ export function PokemonCard({ pokemon }) {
       />
       <Box display={'flex'} flexDir={'column-reverse'}>
         {location.pathname === '/' ? (
-          <Button
-            onClick={() => addToPokedex(pokemon)}
-            right={'8'}
-            bottom={'3'}
-            position={'absolute'}
-            fontWeight={'light'}
-            color={'black'}
-            h={'2.3rem'}
-            w={'9rem'}
-          >
-            Capturar!
-          </Button>
+          <>
+            <Button
+              onClick={onOpen}
+              right={'8'}
+              bottom={'3'}
+              position={'absolute'}
+              fontWeight={'light'}
+              color={'black'}
+              h={'2.3rem'}
+              w={'9rem'}
+            >
+              Capturar!
+            </Button>
+            <GotchaModal isOpen={isOpen} onClose={closeModal} />
+          </>
         ) : (
-          <Button
-            onClick={() => removeFromPokedex(pokemon)}
-            right={'8'}
-            bottom={'3'}
-            position={'absolute'}
-            fontWeight={'light'}
-            h={'2.3rem'}
-            w={'9rem'}
-            bg={'red.100'}
-            _hover={{
-              bg: 'red.200',
-            }}
-            _active={{
-              bg: 'red.300',
-            }}
-          >
-            Excluir
-          </Button>
+          <>
+            <Button
+              onClick={onOpen}
+              right={'8'}
+              bottom={'3'}
+              position={'absolute'}
+              fontWeight={'light'}
+              h={'2.3rem'}
+              w={'9rem'}
+              bg={'red.100'}
+              _hover={{
+                bg: 'red.200',
+              }}
+              _active={{
+                bg: 'red.300',
+              }}
+            >
+              Excluir
+            </Button>
+            <DeleteModal isOpen={isOpen} onClose={closeDeleteModal} />
+          </>
         )}
       </Box>
     </Box>
