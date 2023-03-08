@@ -4,8 +4,11 @@ import { PokemonCard } from '../../components/PokemonCard'
 import { PokemonContext } from '../../contexts/PokemonContext'
 
 export function PokedexPage() {
-  const { pokedex } = useContext(PokemonContext)
+  const { pokedex, isLoading } = useContext(PokemonContext)
 
+  if (isLoading) {
+    return
+  }
   return (
     <main>
       <Box
