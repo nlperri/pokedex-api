@@ -1,14 +1,23 @@
-import { Box, Button, Flex, Image, Text } from '@chakra-ui/react'
+import { Box, Button, Image, Text } from '@chakra-ui/react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
 import { MdArrowBackIosNew } from 'react-icons/md'
 import { goToPokedex, goToPokemonList } from '../../router/coordinator'
+import { useContext } from 'react'
+import { PokemonContext } from '../../contexts/PokemonContext'
 
 export function Header() {
+  const { pokedex, addToPokedex, removeFromPokedex, isLoading, pokemons } =
+    useContext(PokemonContext)
   const navigate = useNavigate()
   const location = useLocation()
   const param = /^\/pokemon\/.+/.test(location.pathname)
+  const pokemonParam = location.pathname.split('/').splice(2, 1).toString()
+  const pokemon = pokemons.filter((poke) => {
+    return poke.data.name === pokemonParam
+  })
 
+  console.log(pokedex)
   return (
     <header>
       <Box
@@ -67,20 +76,38 @@ export function Header() {
               Pokedéx
             </Button>
           )}
-          {param && (
-            <Button
-              w={'14rem'}
-              h={'3.5rem'}
-              bg={'red.100'}
-              _hover={{
-                bg: 'red.200',
-                cursor: 'pointer',
-              }}
-              _active={{ bg: 'red.300' }}
-            >
-              Excluir da Pokedéx
-            </Button>
-          )}
+          {param &&
+            (pokedex.find(
+              (pokemonInPokedex) => pokemonInPokedex.name === pokemonParam
+            ) ? (
+              <Button
+                onClick={() => removeFromPokedex(pokemon[0].data)}
+                w={'14rem'}
+                h={'3.5rem'}
+                bg={'red.100'}
+                _hover={{
+                  bg: 'red.200',
+                  cursor: 'pointer',
+                }}
+                _active={{ bg: 'red.300' }}
+              >
+                Excluir da Pokedéx
+              </Button>
+            ) : (
+              <Button
+                onClick={() => addToPokedex(pokemon[0].data)}
+                w={'14rem'}
+                h={'3.5rem'}
+                bg={'#41e34b'}
+                _hover={{
+                  bg: '#3bcc44',
+                  cursor: 'pointer',
+                }}
+                _active={{ bg: '#34b63c' }}
+              >
+                Adicionar na Pokedéx
+              </Button>
+            ))}
         </Box>
       </Box>
     </header>

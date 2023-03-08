@@ -43,6 +43,19 @@ export function PokemonContextProvider({ children }) {
     getPokemons()
   }, [])
 
+  useEffect(() => {
+    const pokedexFromLocalStorage = localStorage.getItem('pokedex')
+    if (pokedexFromLocalStorage) {
+      setPokedex(JSON.parse(pokedexFromLocalStorage))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (pokedex.length > 0) {
+      localStorage.setItem('pokedex', JSON.stringify(pokedex))
+    }
+  }, [pokedex])
+
   function addToPokedex(pokemon) {
     const isAlreadyOnPokedex = pokedex.find(
       (pokemonInPokedex) => pokemonInPokedex.id === pokemon.id

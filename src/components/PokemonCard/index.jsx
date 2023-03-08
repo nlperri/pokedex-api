@@ -1,7 +1,6 @@
 import { Box, Button, Img, Text } from '@chakra-ui/react'
 import pokeball from '../../assets/pokeball.svg'
-import { useContext, useEffect, useState } from 'react'
-
+import { useContext } from 'react'
 import { PokemonContext } from '../../contexts/PokemonContext'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { goToPokemonDetail } from '../../router/coordinator'
