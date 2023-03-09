@@ -17,7 +17,6 @@ export function Header() {
     return poke.data.name === pokemonParam
   })
 
-  console.log(pokedex)
   return (
     <header>
       <Box
