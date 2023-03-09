@@ -1,0 +1,34 @@
+.pagination {
+  list-style-type: none;
+  display: flex;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+  font-size: 1.2rem;
+  gap: 1rem;
+}
+
+.pagination li {
+  background-color: gray;
+  /* padding: 0.5rem 1.2rem;
+   */
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 100%;
+  border: 1px solid #6c757d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination li:hover {
+  background-color: #6c757d;
+}
+
+.previous,
+.next {
+  margin: 0 3rem;
+}
+
+.selected {
+  background-color: #33a4f5 !important;
+}
