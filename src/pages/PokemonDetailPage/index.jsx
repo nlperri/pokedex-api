@@ -37,7 +37,8 @@ export function PokemonDetailPage() {
     <main>
       <Box
         gap={'4rem'}
-        px={'4rem'}
+        px={{ lg: '4rem', md: '0', base: '0' }}
+        mx={{ lg: '0', md: 'auto', base: 'auto' }}
         display={'flex'}
         flexDir={'column'}
         pt={'3.7rem'}
@@ -47,9 +48,8 @@ export function PokemonDetailPage() {
         <Box w={'full'}>
           <Box
             w={'full'}
-            h={'38rem'}
             bg={renderBg(pokemonDetail.data)}
-            px={'2.75rem'}
+            px={{ lg: '2.75rem', md: '0', base: '0' }}
             py={'1.6rem'}
             rounded={'12px'}
             bgImage={pokeball}
@@ -58,6 +58,8 @@ export function PokemonDetailPage() {
             bgSize={'40rem'}
             display={'flex'}
             gap={'3rem'}
+            flexWrap={'wrap'}
+            justifyContent={{ lg: 'start', md: 'center', base: 'center' }}
           >
             <Box display={'flex'} flexDir={'column'} gap={'3rem'}>
               <Box
@@ -65,23 +67,34 @@ export function PokemonDetailPage() {
                 justifyContent={'center'}
                 rounded={'12px'}
                 bg={'white'}
-                w={'17rem'}
-                h={'17rem'}
+                w={{ lg: '17rem', md: '15rem', base: '12rem' }}
+                h={{ lg: '17rem', md: '15rem', base: '12rem' }}
               >
-                <Img src={pokemonDetail.data.sprites.front_default} />
+                <Img
+                  w={{ lg: '10rem', md: '8rem', base: '6rem' }}
+                  src={pokemonDetail.data.sprites.front_default}
+                />
               </Box>
               <Box
                 display={'flex'}
                 justifyContent={'center'}
                 rounded={'12px'}
                 bg={'white'}
-                w={'17rem'}
-                h={'17rem'}
+                w={{ lg: '17rem', md: '15rem', base: '12rem' }}
+                h={{ lg: '17rem', md: '15rem', base: '12rem' }}
               >
-                <Img src={pokemonDetail.data.sprites.back_default} />
+                <Img
+                  w={{ lg: '10rem', md: '8rem', base: '6rem' }}
+                  src={pokemonDetail.data.sprites.back_default}
+                />
               </Box>
             </Box>
-            <Box p={'1rem'} bg={'white'} w={'23rem'} rounded={'12px'}>
+            <Box
+              p={'1rem'}
+              bg={'white'}
+              w={{ lg: '23rem', md: '18rem', base: '16rem' }}
+              rounded={'12px'}
+            >
               <Text
                 fontWeight={'semibold'}
                 fontSize={'1.4rem'}
@@ -125,7 +138,7 @@ export function PokemonDetailPage() {
               </Box>
               <Box
                 p={'1rem'}
-                w={'18rem'}
+                w={{ lg: '18rem', md: '18rem', base: '16rem' }}
                 bg={'white'}
                 h={'28rem'}
                 rounded={'12px'}
@@ -164,6 +177,7 @@ export function PokemonDetailPage() {
               </Box>
             </Box>
             <Image
+              display={{ lg: 'block', md: 'none', base: 'none' }}
               top={'56'}
               right={'24'}
               position={'absolute'}

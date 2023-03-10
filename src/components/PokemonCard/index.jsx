@@ -60,6 +60,7 @@ export function PokemonCard({ pokemon }) {
       pl={'1.5rem'}
       rounded={'12px'}
       w={'27.5rem'}
+      minW={'12rem'}
       h={'13rem'}
       bg={renderBg(pokemon)}
       bgImage={pokeball}
@@ -88,6 +89,7 @@ export function PokemonCard({ pokemon }) {
       </Box>
 
       <Img
+        display={{ base: 'none', lg: 'block', md: 'block' }}
         h={`${pokemon.name !== 'metapod' && '10rem'}`}
         right={'6'}
         bottom={'16'}

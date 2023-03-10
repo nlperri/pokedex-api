@@ -32,3 +32,15 @@
 .selected {
   background-color: #33a4f5 !important;
 }
+
+@media (max-width: 450px) {
+  .previous,
+  .next {
+    margin: 0 0;
+  }
+
+  .pagination li {
+    width: 2rem;
+    height: 2rem;
+  }
+}
