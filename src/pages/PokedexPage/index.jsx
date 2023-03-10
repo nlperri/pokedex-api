@@ -13,7 +13,8 @@ export function PokedexPage() {
     <main>
       <Box
         gap={'4rem'}
-        px={'4rem'}
+        px={{ lg: '4rem', md: '0', base: '0' }}
+        mx={{ lg: '0', md: 'auto', base: 'auto' }}
         display={'flex'}
         flexDir={'column'}
         pt={'3.7rem'}

@@ -21,15 +21,16 @@ export function Header() {
     <header>
       <Box
         display={'grid'}
-        gridTemplateColumns={'repeat(3,1fr)'}
-        px={'2.5rem'}
+        gridTemplateColumns={{ lg: 'repeat(3,1fr)', md: '1fr', base: '1fr' }}
+        px={{ lg: '2.5rem', md: '0', base: '0' }}
+        mx={{ md: 'auto', base: 'auto' }}
         justify={'space-between'}
         align={'center'}
         pt={'1.3rem'}
         pb={'1.6rem'}
         bg={'white'}
-        w={'full'}
-        h={'10rem'}
+        w={'100vw'}
+        gap={{ lg: '0', md: '1rem', base: '1rem' }}
       >
         {location.pathname !== '/' ? (
           <Box
@@ -50,21 +51,29 @@ export function Header() {
             </Text>
           </Box>
         ) : (
-          <Box visibility={'hidden'} display={'flex'} alignItems={'center'}>
+          <Box
+            visibility={'hidden'}
+            display={{ lg: 'flex', md: 'none', base: 'none' }}
+            alignItems={'center'}
+          >
             <MdArrowBackIosNew color={'black'} />
             <Text color={'black'}>Todos os pokémons</Text>
           </Box>
         )}
 
         <Box display={'flex'} justifyContent={'center'}>
-          <Image w={'19rem'} src={logo} />
+          <Image maxW={'19rem'} src={logo} />
         </Box>
-        <Box display={'flex'} justifyContent={'end'} alignItems={'center'}>
+        <Box
+          display={'flex'}
+          justifyContent={{ lg: 'end', md: 'center', base: 'center' }}
+          alignItems={'center'}
+        >
           {location.pathname === '/' && (
             <Button
               onClick={() => goToPokedex(navigate)}
               bg={'blue.200'}
-              w={'17rem'}
+              w={{ lg: '17rem', md: '15rem', base: '12rem' }}
               h={'4.6rem'}
               _hover={{
                 bg: 'blue.300',
@@ -81,7 +90,7 @@ export function Header() {
             ) ? (
               <Button
                 onClick={() => removeFromPokedex(pokemon[0].data)}
-                w={'14rem'}
+                w={{ lg: '14rem', md: '14rem', base: '12rem' }}
                 h={'3.5rem'}
                 bg={'red.100'}
                 _hover={{
@@ -95,7 +104,7 @@ export function Header() {
             ) : (
               <Button
                 onClick={() => addToPokedex(pokemon[0].data)}
-                w={'14rem'}
+                w={{ lg: '14rem', md: '14rem', base: '12rem' }}
                 h={'3.5rem'}
                 bg={'#41e34b'}
                 _hover={{
