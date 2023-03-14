@@ -38,7 +38,7 @@ export function PokemonDetailPage() {
       <Box
         gap={'4rem'}
         px={{ lg: '4rem', md: '0', base: '0' }}
-        mx={{ lg: '0', md: 'auto', base: 'auto' }}
+        mx={{ lg: '0', md: '1rem', base: '1rem' }}
         display={'flex'}
         flexDir={'column'}
         pt={'3.7rem'}
@@ -61,6 +61,35 @@ export function PokemonDetailPage() {
             flexWrap={'wrap'}
             justifyContent={{ lg: 'start', md: 'center', base: 'center' }}
           >
+            <Box
+              display={{ lg: 'none', md: 'block', base: 'block' }}
+              ml={'1rem'}
+            >
+              <Text>#{pokemonDetail.data.id}</Text>
+              <Heading
+                textTransform='capitalize'
+                fontSize={'2rem'}
+                fontWeight={'bold'}
+                mb={'1rem'}
+              >
+                {pokemonDetail.data.name}
+              </Heading>
+              <Box display={'flex'} gap={'1'}>
+                <Img src={renderTypeOne(pokemonDetail.data)} />
+                {pokemonDetail.data.types[1] ? (
+                  <Img src={renderTypeTwo(pokemonDetail.data)} />
+                ) : (
+                  ''
+                )}
+              </Box>
+            </Box>
+            <Image
+              display={{ lg: 'none', md: 'block', base: 'block' }}
+              h={{ lg: '0', md: '15rem', base: '10rem' }}
+              mt={{ lg: '0', md: '-20', base: '0' }}
+              src={pokemonDetail.data.sprites.other.dream_world.front_default}
+            />
+
             <Box display={'flex'} flexDir={'column'} gap={'3rem'}>
               <Box
                 display={'flex'}
@@ -117,7 +146,10 @@ export function PokemonDetailPage() {
               </Box>
             </Box>
             <Box display={'flex'} flexDir={'column'} gap={'2.8rem'}>
-              <Box ml={'1rem'}>
+              <Box
+                display={{ lg: 'block', md: 'none', base: 'none' }}
+                ml={'1rem'}
+              >
                 <Text>#{pokemonDetail.data.id}</Text>
                 <Heading
                   textTransform='capitalize'
@@ -160,6 +192,7 @@ export function PokemonDetailPage() {
                   {getMoves().map((move) => {
                     return (
                       <Box
+                        key={move}
                         border={'2px dotted'}
                         borderColor={'gray.300'}
                         rounded={'16px'}
