@@ -29,7 +29,7 @@ export function Header() {
         pt={'1.3rem'}
         pb={'1.6rem'}
         bg={'white'}
-        w={'100vw'}
+        w={'full'}
         gap={{ lg: '0', md: '1rem', base: '1rem' }}
       >
         {location.pathname !== '/' ? (
