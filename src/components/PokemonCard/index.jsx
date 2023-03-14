@@ -71,7 +71,11 @@ export function PokemonCard({ pokemon }) {
     >
       <Box>
         <Text>#{pokemon.id}</Text>
-        <Text textTransform='capitalize' fontSize={'2rem'} fontWeight={'bold'}>
+        <Text
+          textTransform='capitalize'
+          fontSize={{ base: '1.5rem', md: '2rem', lg: '2rem' }}
+          fontWeight={'bold'}
+        >
           {pokemon.name}
         </Text>
         <Box display={'flex'} gap={'1'}>
@@ -89,10 +93,9 @@ export function PokemonCard({ pokemon }) {
       </Box>
 
       <Img
-        display={{ base: 'none', lg: 'block', md: 'block' }}
-        h={`${pokemon.name !== 'metapod' && '10rem'}`}
-        right={'6'}
-        bottom={'16'}
+        h={{ base: '7rem', md: '10rem', lg: '10rem' }}
+        right={{ base: '4', md: '6', lg: '6' }}
+        bottom={{ base: '32', md: '16', lg: '16' }}
         position={'absolute'}
         src={`${pokemon.sprites.other.dream_world.front_default}`}
       />

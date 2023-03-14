@@ -1,8 +1,5 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
-import { useContext } from 'react'
+import { Box, Heading } from '@chakra-ui/react'
 import { PaginatedPokemons } from '../../components/PaginatedItems'
-import { PokemonCard } from '../../components/PokemonCard'
-import { PokemonContext } from '../../contexts/PokemonContext'
 
 export function PokemonListPage() {
   return (
@@ -10,7 +7,7 @@ export function PokemonListPage() {
       <Box
         gap={'4rem'}
         px={{ lg: '4rem', md: '0', base: '0' }}
-        mx={{ lg: '0', md: 'auto', base: 'auto' }}
+        mx={{ lg: '0', md: '1rem', base: '1rem' }}
         display={'flex'}
         flexDir={'column'}
         pt={'3.7rem'}
