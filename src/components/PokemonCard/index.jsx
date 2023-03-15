@@ -1,26 +1,11 @@
-import {
-  Box,
-  Button,
-  Heading,
-  Img,
-  Text,
-  useDisclosure,
-} from '@chakra-ui/react'
+import { Box, Button, Img, Text, useDisclosure } from '@chakra-ui/react'
 import pokeball from '../../assets/pokeball.svg'
 import { useContext } from 'react'
 import { PokemonContext } from '../../contexts/PokemonContext'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { goToPokemonDetail } from '../../router/coordinator'
 import { GotchaModal } from '../GotchaModal'
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-} from '@chakra-ui/react'
+
 import { DeleteModal } from '../DeleteModal'
 
 export function PokemonCard({ pokemon }) {
