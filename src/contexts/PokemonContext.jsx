@@ -122,52 +122,7 @@ export function PokemonContextProvider({ children }) {
     }
   }
 
-  function renderTypeOne(pokemon) {
-    const type = pokemon.types[0].type.name
-
-    switch (type) {
-      case 'normal':
-        return normal
-      case 'grass':
-        return grass
-      case 'fire':
-        return fire
-      case 'water':
-        return water
-      case 'bug':
-        return bug
-      case 'dark':
-        return dark
-      case 'dragon':
-        return dragon
-      case 'electric':
-        return electric
-      case 'fairy':
-        return fairy
-      case 'fighting':
-        return fighting
-      case 'flying':
-        return flying
-      case 'ghost':
-        return ghost
-      case 'ground':
-        return ground
-      case 'ice':
-        return ice
-      case 'poison':
-        return poison
-      case 'psychic':
-        return psychic
-      case 'rock':
-        return rock
-      case 'steel':
-        return steel
-    }
-  }
-
-  function renderTypeTwo(pokemon) {
-    const type = pokemon.types[1].type.name
-
+  function renderType(type) {
     switch (type) {
       case 'normal':
         return normal
@@ -217,8 +172,7 @@ export function PokemonContextProvider({ children }) {
         pokedex,
         removeFromPokedex,
         renderBg,
-        renderTypeOne,
-        renderTypeTwo,
+        renderType,
       }}
     >
       {children}
