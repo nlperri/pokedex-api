@@ -33,5 +33,4 @@ export const theme = extendTheme({
     heading: `'Poppins', sans-serif`,
     body: `'Poppins', sans-serif`,
   },
-  components: {},
 })

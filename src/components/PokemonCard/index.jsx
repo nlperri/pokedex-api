@@ -9,14 +9,8 @@ import { GotchaModal } from '../GotchaModal'
 import { DeleteModal } from '../DeleteModal'
 
 export function PokemonCard({ pokemon }) {
-  const {
-    isLoading,
-    addToPokedex,
-    removeFromPokedex,
-    renderBg,
-    renderTypeOne,
-    renderTypeTwo,
-  } = useContext(PokemonContext)
+  const { isLoading, addToPokedex, removeFromPokedex, renderBg, renderType } =
+    useContext(PokemonContext)
 
   const { isOpen, onClose, onOpen } = useDisclosure()
 
@@ -64,8 +58,12 @@ export function PokemonCard({ pokemon }) {
           {pokemon.name}
         </Text>
         <Box display={'flex'} gap={'1'}>
-          <Img src={renderTypeOne(pokemon)} />
-          {pokemon.types[1] ? <Img src={renderTypeTwo(pokemon)} /> : ''}
+          <Img src={renderType(pokemon.types[0].type.name)} />
+          {pokemon.types[1] ? (
+            <Img src={renderType(pokemon.types[1].type.name)} />
+          ) : (
+            ''
+          )}
         </Box>
         <Text
           onClick={() => goToPokemonDetail(navigate, pokemon.name)}

@@ -6,7 +6,7 @@ import pokeball from '../../assets/pokeballbg.png'
 import { PokemonStatBar } from '../../components/PokemonStatBar'
 
 export function PokemonDetailPage() {
-  const { pokemons, renderBg, renderTypeOne, renderTypeTwo, isLoading } =
+  const { pokemons, renderBg, renderType, isLoading } =
     useContext(PokemonContext)
   const { name } = useParams()
 
@@ -32,6 +32,8 @@ export function PokemonDetailPage() {
 
     return moves
   }
+
+  console.log(pokemonDetail)
 
   return (
     <main>
@@ -75,9 +77,11 @@ export function PokemonDetailPage() {
                 {pokemonDetail.data.name}
               </Heading>
               <Box display={'flex'} gap={'1'}>
-                <Img src={renderTypeOne(pokemonDetail.data)} />
-                {pokemonDetail.data.types[1] ? (
-                  <Img src={renderTypeTwo(pokemonDetail.data)} />
+                <Img src={renderType(pokemonDetail.data.types[0].type.name)} />
+                {pokemonDetail.data.types[0] ? (
+                  <Img
+                    src={renderType(pokemonDetail.data.types[1].type.name)}
+                  />
                 ) : (
                   ''
                 )}
@@ -112,7 +116,7 @@ export function PokemonDetailPage() {
                 h={{ lg: '17rem', md: '15rem', base: '12rem' }}
               >
                 <Img
-                  w={{ lg: '10rem', md: '8rem', base: '6rem' }}
+                  w={{ lg: 'rem', md: '8rem', base: '6rem' }}
                   src={pokemonDetail.data.sprites.back_default}
                 />
               </Box>
@@ -145,7 +149,7 @@ export function PokemonDetailPage() {
               </Box>
             </Box>
             <Box display={'flex'} flexDir={'column'} gap={'2.8rem'}>
-              <Box display={'flex'}>
+              <Box display={'flex'} gap={'10rem'}>
                 <Box
                   display={{ lg: 'block', md: 'none', base: 'none' }}
                   ml={'1rem'}
@@ -160,9 +164,13 @@ export function PokemonDetailPage() {
                     {pokemonDetail.data.name}
                   </Heading>
                   <Box display={'flex'} gap={'1'}>
-                    <Img src={renderTypeOne(pokemonDetail.data)} />
-                    {pokemonDetail.data.types[1] ? (
-                      <Img src={renderTypeTwo(pokemonDetail.data)} />
+                    <Img
+                      src={renderType(pokemonDetail.data.types[0].type.name)}
+                    />
+                    {pokemonDetail.data.types[0] ? (
+                      <Img
+                        src={renderType(pokemonDetail.data.types[1].type.name)}
+                      />
                     ) : (
                       ''
                     )}
@@ -171,8 +179,7 @@ export function PokemonDetailPage() {
                 <Image
                   display={{ lg: 'block', md: 'none', base: 'none' }}
                   mt={'-5rem'}
-                  ml={{ lg: '10rem', md: '2rem', base: '2rem' }}
-                  h={'17rem'}
+                  h={`${name !== 'fearow' ? '17rem' : '8rem'}`}
                   src={
                     pokemonDetail.data.sprites.other.dream_world.front_default
                   }
