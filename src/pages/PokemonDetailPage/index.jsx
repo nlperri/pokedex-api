@@ -77,14 +77,17 @@ export function PokemonDetailPage() {
                 {pokemonDetail.data.name}
               </Heading>
               <Box display={'flex'} gap={'1'}>
-                <Img src={renderType(pokemonDetail.data.types[0].type.name)} />
-                {pokemonDetail.data.types[0] ? (
+                {/* First type badge (ex: "Bug"): */}
+                <Img
+                  src={renderType(pokemonDetail.data.types[0].type.name)}
+                />
+                {/* Second type badge (ex: "Poison") (if available):  */}
+                {
+                  pokemonDetail.data.types.length > 1 &&
                   <Img
                     src={renderType(pokemonDetail.data.types[1].type.name)}
                   />
-                ) : (
-                  ''
-                )}
+                }
               </Box>
             </Box>
             <Image
@@ -164,16 +167,17 @@ export function PokemonDetailPage() {
                     {pokemonDetail.data.name}
                   </Heading>
                   <Box display={'flex'} gap={'1'}>
+                    {/* First type badge (ex: "Bug"): */}
                     <Img
                       src={renderType(pokemonDetail.data.types[0].type.name)}
                     />
-                    {pokemonDetail.data.types[0] ? (
+                    {/* Second type badge (ex: "Poison") (if available):  */}
+                    {
+                      pokemonDetail.data.types.length > 1 &&
                       <Img
                         src={renderType(pokemonDetail.data.types[1].type.name)}
                       />
-                    ) : (
-                      ''
-                    )}
+                    }
                   </Box>
                 </Box>
                 <Image
